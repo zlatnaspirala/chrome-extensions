@@ -1,0 +1,14 @@
+{
+  "name" : "Spiral google search",
+  "version": "0.0.1",
+  "default_locale": "en",
+  "manifest_version": 2,
+  "description" : "Interest google search features combination.",
+  "content_scripts" : [
+    {
+      "js" : ["scripts/jq.js", "scripts/app.js"],
+      "css": ["styles/drop-box.css", "styles/style.css"],
+      "matches" : ["*://www.google.com/"]
+    }
+  ]
+}
