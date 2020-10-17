@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description" : "Interest google search features combination.",
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
   "content_scripts" : [
     {
       "js" : ["scripts/jq.js", "scripts/app.js"],
