@@ -1,27 +1,53 @@
 
 #nContainer {
-  background: #73a0e7;
+  background: #f8f9fa;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;;
   align-items: center;
   align-content: stretch;
-  width: "100%";
-  height: "500px";
-  text-shadow: 0 1px 1px #250101;
-  border: solid rgb(58, 156, 221) 1px;
-  border-radius: 2px 2px 2px 2px;
-  padding: 5% 5% 5% 5%;
-  color: white;
+  width: 100%;
+  height: 200px;
+  border: solid rgb(149, 149, 149) 1px;
+  border-radius: 7px 7px 7px 7px;
+  padding: 2px;
+  color: black;
+}
+
+#slotContainerWebSearch, #slotContainerSearchByDomain {
+  width: 100%;
+  background: #f8f9fa;
+  display: flex;
 }
 
 #search-mm-btn {
-  background: #4285f4;
-  color: white;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  color: black;
 }
 
 #search-site-btn {
-  background: #4285f4;
-  color: white;
-  text-shadow: 0 1px 5px #739DFF;
+  background: rgb(255, 255, 255);
+  color: black;
+}
+
+#search-site-input {
+  background: rgb(255, 255, 255);
+  height: min-content;
+  margin-top: 15px;
+  padding: 5px;
+}
+
+#slotContainerToolHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+#slotContainerToolHeader {
+  width: 100%;
+  margin-top: -5px;
+}
+
+.half {
+  width: 50%;
 }

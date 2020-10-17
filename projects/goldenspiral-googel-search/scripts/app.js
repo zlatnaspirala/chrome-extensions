@@ -10,15 +10,22 @@ function getDom(id) {
 
 (function () {
 
-  var extTitle = "<h2>GoldenSpiral google custom search tool</h2>";
+  var extTitle = "<h4 class='half' >Search custom</h4>";
+  extTitle += "<h4 class='half' >Change type</h4>";
 
   function createContainers() {
 
     var btn = document.createElement("div");
     btn.id = "nContainer";
-    btn.innerHTML = extTitle;
     document.querySelector(".FPdoLc.tfB0Bf center").appendChild(btn);
 
+  }
+
+  function createContainerNode(id) {
+
+    var btn = document.createElement("div");
+    btn.id = "slotContainer" + id;
+     getDom("nContainer").appendChild(btn);
   }
 
   function fnAddButtons() {
@@ -26,19 +33,28 @@ function getDom(id) {
     var btn;
 
     /**
+     * @description Tool header
+     */
+    createContainerNode("ToolHeader");
+    getDom("slotContainerToolHeader").innerHTML = extTitle;
+    getDom("nContainer").appendChild(getDom("slotContainerToolHeader"));
+
+    createContainerNode("WebSearch");
+    /**
      * @description Search only links how
      * contain search string in url
      */
     btn = document.createElement("input");
-    btn.value = "Contain search string in url";
+    btn.value = "Search string in url";
     btn.id = "search-mm-btn";
+    btn.title = "Search";
     btn.type = "submit";
     btn.myData = "inurl"
-    getDom("nContainer").appendChild(btn);
+    getDom("slotContainerWebSearch").appendChild(btn);
 
-    getDom("nContainer").innerHTML += `
+    getDom("slotContainerWebSearch").innerHTML += `
         <div class="dropdown">
-          <div class="caption">inurl</div>
+          <div id="pseudoSelect" class="caption">inurl</div>
           <div class="list">
             <div class="item">allinanchor</div>
             <div class="item">allintext</div>
@@ -64,11 +80,14 @@ function getDom(id) {
      * @description Search only links
      * on some domain.
      */
+    createContainerNode("SearchByDomain");
+
     btn = document.createElement("input");
-    btn.value = "Search sites";
+    btn.value = "Search site";
     btn.id = "search-site-btn";
+    btn.title = "Search by domain name";
     btn.type = "submit";
-    getDom("nContainer").appendChild(btn);
+    getDom("slotContainerSearchByDomain").appendChild(btn);
 
     /**
      * @description Search input for
@@ -81,8 +100,10 @@ function getDom(id) {
     btn = document.createElement("input");
     btn.value = "https://maximumroulette.com";
     btn.id = "search-site-input";
+    btn.title = "Search only domain name";
     btn.type = "input";
-    getDom("nContainer").appendChild(btn);
+    // getDom("nContainer").appendChild(btn);
+    getDom("slotContainerSearchByDomain").appendChild(btn);
 
   }
 
@@ -106,14 +127,15 @@ function getDom(id) {
     document
       .getElementById("search-site-btn")
       .addEventListener("click", function (event) {
-        alert(event.target.value)
+        // alert(event.target.value)
         siteSearch(event.target.value.split(" ")[1]);
       });
 
   }
 
   function fnSearch(str) {
-    document.querySelector(".gLFyf.gsfi").value = "inurl:" + document.querySelector(".gLFyf.gsfi").value;
+    document.querySelector(".gLFyf.gsfi").value =
+      getDom("pseudoSelect").innerHTML + ":" + document.querySelector(".gLFyf.gsfi").value;
   }
 
   function siteSearch(str) {
@@ -135,6 +157,7 @@ function getDom(id) {
   $('.dropdown > .list > .item').on('click', function() {
     $('.dropdown > .list > .item').removeClass('selected');
     $(this).addClass('selected').parent().parent().removeClass('open').children('.caption').text( $(this).text() );
+    // console.log(">>>", getDom("pseudoSelect").innerHTML , " <<<",  $(this).text() )
   });
 
   $(document).on('keyup', function(evt) {
